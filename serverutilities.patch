@@ -1,0 +1,17 @@
+diff --git a/serverutilities/serverutilities.cfg b/serverutilities/serverutilities.cfg
+index d3f8069..53993c1 100644
+--- a/serverutilities/serverutilities.cfg
++++ b/serverutilities/serverutilities.cfg
+@@ -195,10 +195,10 @@ world {
+      >
+ 
+     # Enables chunk claiming.
+-    B:chunk_claiming=false
++    B:chunk_claiming=true
+ 
+     # Enables chunk loading. If chunk_claiming is set to false, changing this won't do anything.
+-    B:chunk_loading=false
++    B:chunk_loading=true
+ 
+     # Disables player damage when they are stuck in walls.
+     B:disable_player_suffocation_damage=false
