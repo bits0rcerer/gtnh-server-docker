@@ -6,7 +6,7 @@ WORKDIR /server
 
 RUN unzip /server.zip
 ADD https://cdn.modrinth.com/data/Jrmoreqs/versions/lrc13aHX/AdvancedBackups-forge-1.7.10-3.6.3.jar /server/mods/
-ADD https://raw.githubusercontent.com/MommyHeather/AdvancedBackups/0f845c3c8c06d963c14456f60cb9f31d403072b8/src/main/resources/advancedbackups-properties.txt /server/AdvancedBackups.properties
+ADD AdvancedBackups.properties /server/config/
 
 ADD *.patch /
 RUN apk add patch && ash -c 'for f in /*.patch; do patch -p1 -i $f; done'
