@@ -7,6 +7,7 @@ WORKDIR /server
 RUN unzip /server.zip
 ADD https://cdn.modrinth.com/data/Jrmoreqs/versions/lrc13aHX/AdvancedBackups-forge-1.7.10-3.6.3.jar /server/mods/
 ADD AdvancedBackups.properties /server/config/
+ADD https://github.com/GTNewHorizons/GTNH-Web-Map/releases/download/0.3.29/gtnh-web-map-0.3.29.jar /server/mods/
 
 ADD *.patch /
 RUN apk add patch && ash -c 'for f in /*.patch; do patch -p1 -i $f; done'
@@ -20,6 +21,7 @@ ADD entrypoint.sh .
 
 ENV MEM=8G
 EXPOSE 25565
+EXPOSE 8123
 VOLUME [ "/server/World" ]
 VOLUME [ "/server/backups" ]
 CMD [ "/server/entrypoint.sh" ]
