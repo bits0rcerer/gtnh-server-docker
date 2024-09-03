@@ -11,9 +11,15 @@ ADD https://github.com/GTNewHorizons/GTNH-Web-Map/releases/download/0.3.29/gtnh-
 
 ADD *.patch /
 RUN apk add patch && ash -c 'for f in /*.patch; do patch -p1 -i $f; done'
+ADD server.properties .
+
+FROM golang AS rcon-builder
+
+RUN go install github.com/willroberts/minecraft-client/cmd/shell@latest
 
 FROM eclipse-temurin:21
 
+COPY --from=rcon-builder /go/bin/shell /bin/rcon
 COPY --from=builder --chown=1000:1000 /server /server
 USER 1000:1000
 WORKDIR /server
